@@ -1,4 +1,21 @@
-import { useState, useEffect, useCallback } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inventory Manager</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js" crossorigin></script>
+<style>
+  body { margin: 0; font-family: 'Inter', sans-serif; background: #f1f5f9; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useCallback } = React;
 
 const STORAGE_KEY = "inventory_db";
 
@@ -44,9 +61,7 @@ const tabs = ["Purchase Entry", "Sale Entry", "Stock Report"];
 const inputClass =
   "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-white";
 
-const labelClass = "block text-xs font-semibold text-slate-500 mb-1 uppercase tracking-wide";
-
-export default function App() {
+function App() {
   const [activeTab, setActiveTab] = useState(0);
   const [db, setDB] = useState(loadDB);
   const [purchase, setPurchase] = useState({ ...emptyPurchase, date: today() });
@@ -477,3 +492,9 @@ function primaryBtn(color) {
     boxShadow: `0 4px 14px ${color}55`, transition: "opacity 0.2s"
   };
 }
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+</script>
+</body>
+</html>
